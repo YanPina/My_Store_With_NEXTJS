@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Header from '../components/Header';
 
 export default function Home() {
   return (
@@ -8,7 +9,8 @@ export default function Home() {
         <title>Yan Store</title>
       </Head>
 
-      <h1>Hello, iam Yan</h1>
+      <Header/>
+      
     </div>
   );
 }

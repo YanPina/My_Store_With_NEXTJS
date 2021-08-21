@@ -30,7 +30,7 @@ function Header() {
 
                 {/* Right */}
                 <div className='text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap' >
-                    
+                    <p><a href="/auth">LoginIn</a></p>
                     <div onClick={signIn} className='cursor-pointer link'>
                         <p className='hover:underline' >Hello Yan Pina</p>
                         <p className='font-extrabold md:text-sm'>Account</p>

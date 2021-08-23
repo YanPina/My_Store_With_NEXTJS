@@ -4,11 +4,12 @@ import {
     SearchIcon,
     ShoppingCartIcon,
 } from '@heroicons/react/outline';
+import { signIn, signOut, useSession } from 'next-auth/client';
 
 function Header() {
+
     return (
-        <header >
-            {/* Top Nav */}
+        <header>
             <div className='flex items-center bg-amazon_blue p-1 flex-grow py-2'>
                 <div className='mt-2 flex items-center flex-grow sm:flex-grow-0'>
                     <Image
@@ -29,9 +30,9 @@ function Header() {
                 {/* Right */}
                 <div className='text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap' >
                     
-                    <div  className='cursor-pointer link'>
-                        <p className='hover:underline' ><a href="/auth">Hello Yan Pina</a></p>
-                        <p className='font-extrabold md:text-sm'><a href="/auth">Account</a></p>
+                    <div onClick={signIn} className='cursor-pointer link'>
+                        <p className='hover:underline' >Hello</p>
+                        <p className='font-extrabold md:text-sm'>Account</p>
                     </div>
 
                     <div className='cursor-pointer link'>
@@ -43,7 +44,8 @@ function Header() {
                         <span className='absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-500 text-center rounded-full text-black font-bold'>0</span>
                         <ShoppingCartIcon className='h-10' />
                         <p className='hidden md:inline font-extrabold md:text-sm mt-2'>Cart</p>
-                    </div>  
+                    </div>
+                    
                 </div>
 
             </div>

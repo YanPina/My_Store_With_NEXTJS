@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/client';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import { groupBy } from "lodash";
-const stripePromise = loadStripe(process.env.stripe_public_key);
+const stripePromise = loadStripe(process.env.STRIPE_SECRET_KEY);
 
 function Checkout() {
 

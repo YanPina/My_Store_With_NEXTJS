@@ -25,10 +25,11 @@ function Checkout() {
             <main className='lg:flex max-w-screen-2xl mx-auto' >
                 <div className='flex-grow m5 shadow-sm' >
                     <img 
-                        src='Banner/banner6.jpg'
+                        src='/Banner/banner6.jpg'
                         width={1020}
                         height={250}
                         objectFit='contain'
+                        alt=''
                     />
 
                     <div className='flex flex-col p-5 space-y-10 bg-white ' >

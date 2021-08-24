@@ -16,7 +16,7 @@ function ProductFeed({ products }) {
                 />
             ))}
 
-            <img className='md:col-span-full' src="Banner/banner5.png" alt="" />
+            <img className='md:col-span-full' src="Banner/banner5.png" alt=''/>
         
             <div className='md:col-span-2'>
                 {products.slice(4, 5).map(({id, title, price, description, category, image}) => (

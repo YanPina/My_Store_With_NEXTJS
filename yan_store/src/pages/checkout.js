@@ -19,7 +19,7 @@ function Checkout() {
             <Header />
 
             <Head>
-                <title>Yan Store</title>
+                <title>Checkout</title>
             </Head>
 
             <main className='lg:flex max-w-screen-2xl mx-auto' >

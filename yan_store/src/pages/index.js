@@ -6,16 +6,14 @@ import ProductFeed from '../components/ProductFeed';
 export default function Home({ products }) {
 
   return (
-    <div className='bg-gray-100'>
+    <div className='bg-gray-100' >
       <Header/>
 
       <Head>
         <title>Yan Store</title>
       </Head>
 
-      
       <main className='max-w-screen-2xl mx-auto'>
-        
         <Banner/>
         
         <ProductFeed products={products} />

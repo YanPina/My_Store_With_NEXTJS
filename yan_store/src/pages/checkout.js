@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/client';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import { groupBy } from "lodash";
-const stripePromise = loadStripe(process.env.STRIPE_SECRET_KEY);
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function Checkout() {
 
@@ -18,13 +18,15 @@ function Checkout() {
     const total = useSelector(selectTotal);
     const [session] = useSession();
 
-    const createCheckoutSession = async () => {
+    async function createCheckoutSession () {
         const stripe = await stripePromise;
 
-        const checkoutSession = await axios.post('/api/create-checkout-session',{
-            items: items,
-            email: session.user.email
-        });
+        const checkoutSession = await axios.post('api/create-checkout-session',
+            {
+                items,
+                email: session.user.email,
+            }
+        );
 
         //Redireciona o cliente para o checkout (Stripe)
         const result = await stripe.redirectToCheckout({

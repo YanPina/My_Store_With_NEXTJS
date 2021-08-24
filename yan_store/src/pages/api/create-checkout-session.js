@@ -6,11 +6,6 @@ const path = require("path");
 export default async (req, res) => {
     const { items, email } = req.body;
 
-    // console.log(items);
-    // console.log(email);
-
-    // @Todo : READ THE STRIPE DOCS!
-
     const groupedItems = Object.values(groupBy(items, "id"));
 
     const transformedItems = groupedItems.map((group) => ({
@@ -33,9 +28,9 @@ export default async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        shipping_rates: ['shr_1JS0PHGLP297gO1brY1E8mSn'],
+        shipping_rates: ['shr_1JS4MIGLP297gO1bwcGauYar'],
         shipping_address_collection: {
-            allowed_contries: ['GB', 'US', 'CA', 'BR'],
+            allowed_countries: ['US', 'BR'],
         },
         line_items: transformedItems,
         mode: "payment",

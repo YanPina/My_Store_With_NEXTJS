@@ -11,7 +11,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import { groupBy } from "lodash";
 const stripePromise = loadStripe(process.env.stripe_public_key);
-
+ 
 function Checkout() {
 
     const items = useSelector(selectItems);

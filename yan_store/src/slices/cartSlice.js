@@ -16,9 +16,9 @@ export const cartSlice = createSlice({
             state.items = [...state.items, action.payload];
         },
         removeFromCart: (state, action) => {
-            const index = state.items.findIndex((cartItem) => cartItem.id === action.payload.id
+            let pos = state.items.findIndex(
+                (item) => item.id === action.payload.id
             );
-
             let newCart = [...state.items];
 
             if (pos > -1) {

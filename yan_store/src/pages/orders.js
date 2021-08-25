@@ -4,41 +4,54 @@ import { useSession, getSession } from 'next-auth/client';
 import moment from 'moment';
 import { db } from '../../firebase';
 import Order from '../components/Order';
-
+import { useRouter } from "next/router";
 function Orders({ orders }) {
-
     const [session] = useSession();
-
-    console.log(orders);
+    const router = useRouter();
 
     return (
         <div>
-            <Header />
-
             <Head>
                 <title>Orders</title>
             </Head>
-            <main className='max-w-screen-lg mx-auto p-10'>
-                <h1 className='text-3xl border-b mb-2 pb-1 border-yellow-400'>
-                    Your Orders
+            <Header />
+            <main className="max-w-screen-lg mx-auto p-10">
+                <h1 className="text-3xl border-b mb-2 pb-1 border-yellow-400">
+                    Your orders
                 </h1>
 
                 {session ? (
-                    <h2>{orders.length} Orders</h2>
-                ): (
-                    <h2>Please sign in to see your orders</h2>
+                    <h2 className="text-xl">
+                        {orders.length > 0 ? (
+                            <>
+                                {orders.length} Order{orders.length > 1 && "s"}
+                            </>
+                        ) : (
+                            <>
+                                You don't have any order yet. Go visit the{" "}
+                                <button
+                                    onClick={() => router.push("/")}
+                                    className="link text-yellow-400 underline hover:no-underline">
+                                    Homepage Store
+                                </button>{" "}
+                                to purchase some items.
+                            </>
+                        )}
+                    </h2>
+                ) : (
+                    <h2>Please sign in to see your orders.</h2>
                 )}
 
-                <div className='mt-5 space-y-4' >
-                    {orders?.map(({ id, amount, amountShipping, items, timestamp, images }) => (
+                <div className="mt-5 space-y-4">
+                    {orders?.map((order) => (
                         <Order
-                            key={id}
-                            id={id}
-                            amount={amount}
-                            amountShipping={amountShipping}
-                            images={images}
-                            timestamp={timestamp}
-                            items={items}
+                            key={order.id}
+                            id={order.id}
+                            amount={order.amount}
+                            amountShipping={order.amountShipping}
+                            images={order.images}
+                            timestamp={order.timestamp}
+                            items={order.items}
                         />
                     ))}
                 </div>
@@ -52,6 +65,7 @@ export default Orders;
 export async function getServerSideProps(context) {
     const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
+    // Get the user logged in credentials...
     const session = await getSession(context);
 
     if (!session) {

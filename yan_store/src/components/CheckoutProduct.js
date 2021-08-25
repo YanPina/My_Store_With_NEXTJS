@@ -27,7 +27,6 @@ function CheckoutProduct(props) {
             category,
             image,
             rating,
-            hasPrime,
         };
 
         //Enviando o produto por meio de uma ação redux para a loja (= cart "slice")

@@ -64,7 +64,7 @@ function Checkout() {
                             }`}>
                             {items.length === 0
                                 ? "Your Cart is empty."
-                                : "Shopping Basket"}
+                                : "Shopping Cart"}
                         </h1>
 
 

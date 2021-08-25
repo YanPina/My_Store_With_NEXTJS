@@ -14,7 +14,6 @@ function CheckoutProduct(props) {
     const description = props.description;
     const category = props.category;
     const image = props.image;
-    const hasPrime = props.hasPrime;
     const quantity = props.quantity;
 
     const total = price * quantity;

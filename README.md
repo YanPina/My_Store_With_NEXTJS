@@ -6,3 +6,9 @@ web em: yan-store-h9r6yr7jd-yanpina.vercel.app.
 NextJs e com as bibliotecas Tailwindcss e Postcss.
 - No seu Back-End, utilizei o banco de dados do Firebase para armazenar
 os usuários, detalhes de pedidos e pagamentos processados.
+
+
+## Getting Started
+- npm run dev
+     ####     or
+- yarn dev
